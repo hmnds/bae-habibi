@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --navbar-height: 4.5rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--navbar-height) + 1rem);
+  }
+
+  body {
+    @apply bg-night-950 font-sans text-cream-100 antialiased;
+    background-image:
+      radial-gradient(60rem 40rem at 85% -10%, rgba(249, 134, 7, 0.12), transparent 60%),
+      radial-gradient(50rem 30rem at -10% 20%, rgba(224, 58, 44, 0.1), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-habibi-500 text-night-950;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-habibi-400;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-night-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-night-700;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-habibi-700;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ember-gradient px-6 py-3 font-semibold text-white shadow-glow transition duration-300 hover:brightness-110 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3 font-semibold text-cream-100 transition duration-300 hover:border-habibi-400 hover:text-habibi-300 active:scale-95;
+  }
+
+  .glass {
+    @apply border border-white/10 bg-night-900/70 backdrop-blur-xl;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-white/10 bg-night-800 px-4 py-3 text-cream-100 placeholder:text-cream-100/40 transition focus:border-habibi-400 focus:outline-none focus:ring-2 focus:ring-habibi-400/30;
+  }
+
+  .skeleton {
+    @apply animate-shimmer rounded-2xl bg-[length:200%_100%];
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.04) 25%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.04) 75%
+    );
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-ember-gradient bg-clip-text text-transparent;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
